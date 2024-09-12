@@ -13,8 +13,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import sklearn
 
-url = r"c:\Users\Dell\Downloads\automobile_data (1).csv"
-df = pd.read_csv(url)
+df = pd.read_csv(r'automobile_data (1).csv')
 
 """# ***DATA CLEANING***"""
 
