@@ -4,7 +4,7 @@ import pandas as pd
 
 # working_dir = os.path.dirname(os.path.abspath(__file__))
 # model_path = f"{working_dir}\random_forest_model.pkl"
-loaded_model = joblib.load('random_forest_model.pkl')
+loaded_model = joblib.load('logistic_rain.pkl')
 
 st.title("Will it Rain?")
 
