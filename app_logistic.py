@@ -51,30 +51,32 @@ for loc in locations:
     location_inputs[loc] = st.selectbox(f'{loc}', [0, 1], index=0)
 
 if st.button('Predict'):
-        user_input = pd.DataFrame({
-            'MinTemp': [MinTemp],
-            'MaxTemp': [MaxTemp],
-            'Rainfall': [Rainfall],
-            'WindGustSpeed': [WindGustSpeed],
-            'WindSpeed9am': [WindSpeed9am],
-            'WindSpeed3pm': [WindSpeed3pm],
-            'Humidity9am': [Humidity9am],
-            'Humidity3pm': [Humidity3pm],
-            'Pressure9am': [Pressure9am],
-            'Pressure3pm': [Pressure3pm],
-            'Temp9am': [Temp9am],
-            'Temp3pm': [Temp3pm],
-            'RISK_MM': [RISK_MM],
-            'RainToday_encoded': [RainToday_encoded],
-            **{loc: [value] for loc, value in location_inputs.items()}
+    user_input = pd.DataFrame({
+        'MinTemp': [MinTemp],
+        'MaxTemp': [MaxTemp],
+        'Rainfall': [Rainfall],
+        'WindGustSpeed': [WindGustSpeed],
+        'WindSpeed9am': [WindSpeed9am],
+        'WindSpeed3pm': [WindSpeed3pm],
+        'Humidity9am': [Humidity9am],
+        'Humidity3pm': [Humidity3pm],
+        'Pressure9am': [Pressure9am],
+        'Pressure3pm': [Pressure3pm],
+        'Temp9am': [Temp9am],
+        'Temp3pm': [Temp3pm],
+        'RISK_MM': [RISK_MM],
+        'RainToday_encoded': [RainToday_encoded],
+        **{loc: [value] for loc, value in location_inputs.items()}
 
         })
 
+    prediction = predict(user_input)
+    if prediction[0] == 1:
+        st.success("It will rain tomorrow!")
+    else:
+        st.success("It will not rain tomorrow!")
 
 
-prediction = predict(user_input)
 
-if prediction[0] == 1:
-    st.success("It will rain tomorrow!")
-else:
-    st.success("It will not rain tomorrow!")
+
+
